@@ -1,7 +1,11 @@
-Hackway
+Hackway [![Stillmaintained](http://stillmaintained.com/Tomohiro/hackway.png)](http://stillmaintained.com/Tomohiro/hackway)
 ================================================================================
 
 [Hacker News](http://news.ycombinator.com/news) IRC Gateway
+
+
+[![Dependency Status](https://gemnasium.com/Tomohiro/hackway.png)](https://gemnasium.com/Tomohiro/hackway)
+[![Code Climate](https://codeclimate.com/github/Tomohiro/hackway.png)](https://codeclimate.com/github/Tomohiro/hackway)
 
 
 Requirements
