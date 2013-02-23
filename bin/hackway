@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'hackway'
+
+Hackway::Server.new.start
