@@ -45,8 +45,9 @@ module Hackway
 
     private
       def monitoring(channel)
-        articles = Nokogiri::HTML(open('http://news.ycombinator.com/news')).search('.title')
-        subtexts = Nokogiri::HTML(open('http://news.ycombinator.com/news')).search('.subtext')
+        news = Nokogiri::HTML(open('https://news.ycombinator.com/news'))
+        articles = news.search('.title')
+        subtexts = news.search('.subtext')
 
         while articles.size > 1
           articles.shift
