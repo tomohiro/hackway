@@ -50,7 +50,7 @@ $ bundle exec hackeway --server 192.168.10.1 --port 16667
 
 #### Server options
 
-If you want check the command-line options, following type command. 
+If you want check the command-line options, following type command.
 
 ```sh
 $ bundle exec hackeway --help
@@ -58,7 +58,7 @@ $ bundle exec hackeway --help
 
 Option       | Value                              | Default
 -----------  | ---------------------------------- | ----------
--p, --port   | Port number to listen              | 16705
+-p, --port   | Port number to listen              | 16706
 -s, --server | Host name or IP address to listen  | localhost
 -w, --wait   | Wait SECONDS between retrievals    | 360(sec)
 -l, --log    | Log file                           | STDOUT
