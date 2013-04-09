@@ -45,7 +45,7 @@ module Hackway
 
     private
       def monitoring(channel)
-        news = Nokogiri::HTML(open('https://news.ycombinator.com/news'))
+        news = Nokogiri::HTML(open('https://news.ycombinator.com/news').read)
         articles = news.search('.title')
         subtexts = news.search('.subtext')
 
@@ -78,7 +78,7 @@ module Hackway
       def extract_comments(comments_dom)
         {
           count: comments_dom.text,
-          url:   "http://news.ycombinator.com/#{comments_dom.attributes['href'].text}"
+          url:   "https://news.ycombinator.com/#{comments_dom.attributes['href'].text}"
         }
       end
   end
