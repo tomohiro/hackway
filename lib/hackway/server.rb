@@ -11,7 +11,7 @@ module Hackway
     def parse_options
       opts = Slop.parse(help: true) do
         banner 'Usage: iig [options]'
-        on :p, :port,    'Port number to listen (default: 16705)',                 argument: :optional, as: :integer, default: 16705
+        on :p, :port,    'Port number to listen (default: 16706)',                 argument: :optional, as: :integer, default: 16706
         on :s, :server,  'Host name or IP address to listen (default: localhost)', argument: :optional, as: :string,  default: :localhost
         on :w, :wait,    'Wait SECONDS between retrievals (default: 360)',         argument: :optional, as: :integer, default: 360
         on :l, :log,     'Log file (default: STDOUT)',                             argument: :optional, as: :string,  default: nil
