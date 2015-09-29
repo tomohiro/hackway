@@ -38,7 +38,7 @@ $ bundle exec hackeway
 Example: Change listen IP address, port.
 
 ```sh
-$ bundle exec hackeway --server 192.168.10.1 --port 16667
+$ bundle exec hackeway --host 192.168.10.1 --port 16667
 ```
 
 
@@ -59,7 +59,7 @@ $ bundle exec hackeway --help
 Option       | Value                              | Default
 -----------  | ---------------------------------- | ----------
 -p, --port   | Port number to listen              | 16706
--s, --server | Host name or IP address to listen  | localhost
+-h, --host   | Host name or IP address to listen  | localhost
 -w, --wait   | Wait SECONDS between retrievals    | 360(sec)
 -l, --log    | Log file                           | STDOUT
 
@@ -68,13 +68,13 @@ Option       | Value                              | Default
 ### Channels
 
 Channel       | Description          | Auto join
-------------  | -------------------- | ---------
+------------- | -------------------- | ---------
 `#hackernews` | Hacker News articles | yes
 
 
 LICENSE
 --------------------------------------------------------------------------------
 
-&copy; 2013 Tomohiro TAIRA.
-This project is licensed under the MIT license.
-See LICENSE for details.
+&copy; 2013 - 2015 Tomohiro TAIRA.
+
+This project is licensed under the MIT license. See [LICENSE](LICENSE) for details.
