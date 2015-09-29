@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 require 'open-uri'
 require 'net/irc'
 require 'nokogiri'
@@ -44,42 +42,43 @@ module Hackway
     end
 
     private
-      def monitoring(channel)
-        news = Nokogiri::HTML(open('https://news.ycombinator.com/news').read)
-        articles = news.search('.title')
-        subtexts = news.search('.subtext')
 
-        while articles.size > 1
-          articles.shift
-          article = articles.shift.at('a')
-          subtext = subtexts.shift
+    def monitoring(channel)
+      news = Nokogiri::HTML(open('https://news.ycombinator.com/news').read)
+      articles = news.search('.title')
+      subtexts = news.search('.subtext')
 
-          url = article.attributes['href'].text
-          next if @notified_articles.include?(url)
-          @notified_articles << url
+      while articles.size > 1
+        articles.shift
+        article = articles.shift.at('a')
+        subtext = subtexts.shift
 
-          title    = article.text
-          score    = subtext.at('span').text
-          user     = subtext.search('a').first.text
-          comments = extract_comments(subtext.search('a').last)
+        url = article.attributes['href'].text
+        next if @notified_articles.include?(url)
+        @notified_articles << url
 
-          privmsg(user, channel, "#{title} #{url} (#{score}) #{comments[:count]} - #{comments[:url]}")
-        end
-      rescue Exception => e
-        @log.error(e.inspect)
-        e.backtrace.each { |l| @log.error "\t#{l}" }
-        sleep 300 # Retry after 300 seconds.
+        title    = article.text
+        score    = subtext.at('span').text
+        user     = subtext.search('a').first.text
+        comments = extract_comments(subtext.search('a').last)
+
+        privmsg(user, channel, "#{title} #{url} (#{score}) #{comments[:count]} - #{comments[:url]}")
       end
+    rescue Exception => e
+      @log.error(e.inspect)
+      e.backtrace.each { |l| @log.error "\t#{l}" }
+      sleep 300 # Retry after 300 seconds.
+    end
 
-      def privmsg(nick, channel, message)
-        post(nick, PRIVMSG, channel, message)
-      end
+    def privmsg(nick, channel, message)
+      post(nick, PRIVMSG, channel, message)
+    end
 
-      def extract_comments(comments_dom)
-        {
-          count: comments_dom.text,
-          url:   "https://news.ycombinator.com/#{comments_dom.attributes['href'].text}"
-        }
-      end
+    def extract_comments(comments_dom)
+      {
+        count: comments_dom.text,
+        url:   "https://news.ycombinator.com/#{comments_dom.attributes['href'].text}"
+      }
+    end
   end
 end
