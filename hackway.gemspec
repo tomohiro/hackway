@@ -20,7 +20,7 @@ Gem::Specification.new do |gem|
 
   gem.add_runtime_dependency 'slop'
   gem.add_runtime_dependency 'net-irc'
-  gem.add_runtime_dependency 'nokogiri'
+  gem.add_runtime_dependency 'rest-firebase'
 
   gem.add_development_dependency 'rake'
 end
